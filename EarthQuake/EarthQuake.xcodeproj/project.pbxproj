@@ -8,17 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		D03FD40B2B71A5EE00BB27D3 /* EarthQuakeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03FD40A2B71A5EE00BB27D3 /* EarthQuakeApp.swift */; };
-		D03FD40D2B71A5EE00BB27D3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03FD40C2B71A5EE00BB27D3 /* ContentView.swift */; };
+		D03FD40D2B71A5EE00BB27D3 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03FD40C2B71A5EE00BB27D3 /* HomeView.swift */; };
 		D03FD40F2B71A5EF00BB27D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D03FD40E2B71A5EF00BB27D3 /* Assets.xcassets */; };
 		D03FD4122B71A5EF00BB27D3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D03FD4112B71A5EF00BB27D3 /* Preview Assets.xcassets */; };
+		D03FD41C2B71A86E00BB27D3 /* EarthquakeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03FD41B2B71A86E00BB27D3 /* EarthquakeCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D03FD4072B71A5EE00BB27D3 /* EarthQuake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EarthQuake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D03FD40A2B71A5EE00BB27D3 /* EarthQuakeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthQuakeApp.swift; sourceTree = "<group>"; };
-		D03FD40C2B71A5EE00BB27D3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D03FD40C2B71A5EE00BB27D3 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		D03FD40E2B71A5EF00BB27D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D03FD4112B71A5EF00BB27D3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D03FD41B2B71A86E00BB27D3 /* EarthquakeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +53,8 @@
 		D03FD4092B71A5EE00BB27D3 /* EarthQuake */ = {
 			isa = PBXGroup;
 			children = (
-				D03FD40A2B71A5EE00BB27D3 /* EarthQuakeApp.swift */,
-				D03FD40C2B71A5EE00BB27D3 /* ContentView.swift */,
+				D03FD4182B71A64800BB27D3 /* App */,
+				D03FD4192B71A65E00BB27D3 /* View */,
 				D03FD40E2B71A5EF00BB27D3 /* Assets.xcassets */,
 				D03FD4102B71A5EF00BB27D3 /* Preview Content */,
 			);
@@ -65,6 +67,31 @@
 				D03FD4112B71A5EF00BB27D3 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D03FD4182B71A64800BB27D3 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				D03FD40A2B71A5EE00BB27D3 /* EarthQuakeApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		D03FD4192B71A65E00BB27D3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D03FD41A2B71A85B00BB27D3 /* Home */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D03FD41A2B71A85B00BB27D3 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				D03FD40C2B71A5EE00BB27D3 /* HomeView.swift */,
+				D03FD41B2B71A86E00BB27D3 /* EarthquakeCell.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +164,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D03FD40D2B71A5EE00BB27D3 /* ContentView.swift in Sources */,
+				D03FD40D2B71A5EE00BB27D3 /* HomeView.swift in Sources */,
+				D03FD41C2B71A86E00BB27D3 /* EarthquakeCell.swift in Sources */,
 				D03FD40B2B71A5EE00BB27D3 /* EarthQuakeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
