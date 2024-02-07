@@ -16,15 +16,20 @@ struct HomeView: View {
             ScrollView {
                 VStack {
                     ForEach(0..<20, id: \.self) { element in
-                        EarthquakeCell()
-                            .background(.white)
-                            .clipShape(
-                                RoundedRectangle(cornerRadius: 8))
-                        Divider()
+                        NavigationLink {
+                            InformationPage()
+                        } label: {
+                            EarthquakeCell()
+                                .tint(.black)
+                                .background(.white)
+                                .clipShape(
+                                    RoundedRectangle(cornerRadius: 6))
+                                .padding(.horizontal)
+                        }
                     }
                 }
-                .padding()
-                .background(.pink)
+                .padding(.top)
+                .background(Color("HomeBackground"))
             }
             
             .navigationTitle("Earchquakes")

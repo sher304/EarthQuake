@@ -15,16 +15,18 @@ struct EarthquakeCell: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .foregroundStyle(.red)
-                .frame(width: 40, height: 40)
+                .frame(width: 30, height: 30)
+                .padding(.top)
             
             HStack(spacing: 20) {
                 VStack(alignment: .leading) {
                     Text("22 km from your position")
                         .fontWeight(.semibold)
                     Text("Almaty, Kazakhstan")
+                        .foregroundStyle(.gray)
                     Text("41 min ago, 3:30 AM")
+                        .foregroundStyle(.gray)
                 }
-                .background(.brown)
                 
                 VStack {
                     Text("5.1")
@@ -32,8 +34,6 @@ struct EarthquakeCell: View {
                         .fontWeight(.semibold)
                     Text("Magnitude")
                 }
-                .padding(.bottom, 50)
-                .background(.red)
                 
                 VStack(spacing: 0) {
                     Image(systemName: "ipodshuffle.gen3")
@@ -49,13 +49,10 @@ struct EarthquakeCell: View {
                         .frame(width: 20, height: 30)
                         .background(.green)
                 }
-                .background(.purple)
             }
-            .frame(maxWidth: .infinity)
-            .background(.cyan)
         }
-        .padding(.horizontal)
-        .background(.green)
+        .frame(maxWidth: .infinity)
+        .padding(.leading, 10)
     }
 }
 
