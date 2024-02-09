@@ -11,6 +11,7 @@ import SwiftUI
 struct MapViewRepresentable: UIViewRepresentable {
     
     let mapView = MKMapView()
+    @Binding var selectedLocation: CLLocationCoordinate2D?
     
     func makeUIView(context: Context) -> some UIView {
         mapView.delegate = context.coordinator
@@ -21,7 +22,9 @@ struct MapViewRepresentable: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UIViewType, context: Context) {
-        print("UPDATE UI VIEw")
+        if let selectedLocation = selectedLocation {
+            context.coordinator.addSelectAnnotation(coordinate: selectedLocation)
+        }
     }
     
     func makeCoordinator() -> MapCoordinator {
@@ -60,5 +63,13 @@ extension MapViewRepresentable {
             parent.mapView.setRegion(region, animated: true)
         }
         
+        func addSelectAnnotation(coordinate: CLLocationCoordinate2D) {
+            parent.mapView.removeAnnotations(parent.mapView.annotations)
+            
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = coordinate
+            self.parent.mapView.addAnnotation(annotation)
+            self.parent.mapView.selectAnnotation(annotation, animated: true)
+        }
     }
 }

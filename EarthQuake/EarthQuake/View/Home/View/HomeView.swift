@@ -10,16 +10,19 @@ import SwiftUI
 struct HomeView: View {
     
     // MARK: Properties
+    @StateObject private var viewModel = HomeViewModel()
     
+    // MARK: View
     var body: some View {
         NavigationStack {
+            
             ScrollView {
                 VStack {
-                    ForEach(0..<20, id: \.self) { element in
+                    ForEach(viewModel.features, id: \.id) { feature in
                         NavigationLink {
-                            InformationPage()
+                            InformationPage(feature: feature)
                         } label: {
-                            EarthquakeCell()
+                            EarthquakeCell(feature: feature)
                                 .tint(.black)
                                 .background(.white)
                                 .clipShape(
@@ -28,22 +31,30 @@ struct HomeView: View {
                         }
                     }
                 }
-                .padding(.top)
-                .background(Color("HomeBackground"))
             }
+            .padding(.top)
+            .background(Color("HomeBackground"))
             
             .navigationTitle("Earchquakes")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar(content: {
                 Button {
-                    
+
                 } label: {
                     Image(systemName: "arrow.clockwise")
                         .foregroundStyle(.black)
                 }
                 .padding(.trailing, 8)
             })
-        }
+            .toolbarBackground(.visible, for: .navigationBar)
+        }.onAppear(perform: {
+            viewModel.getAccidents()
+        })
+        .onReceive(LocationManager.shared.$userCurrentLocation, perform: { userLocation in
+            if let userLocation = userLocation {
+                viewModel.userLocation = userLocation
+            }
+        })
     }
 }
 

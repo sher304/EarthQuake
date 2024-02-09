@@ -15,6 +15,8 @@
 		D03FD41F2B72D7A300BB27D3 /* InformationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03FD41E2B72D7A300BB27D3 /* InformationPage.swift */; };
 		D03FD4222B72D83800BB27D3 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03FD4212B72D83800BB27D3 /* LocationManager.swift */; };
 		D03FD4272B73D16E00BB27D3 /* MapViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03FD4262B73D16E00BB27D3 /* MapViewRepresentable.swift */; };
+		D03FD42B2B741F9A00BB27D3 /* AccidentResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03FD42A2B741F9A00BB27D3 /* AccidentResponse.swift */; };
+		D03FD4302B74202800BB27D3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03FD42F2B74202800BB27D3 /* HomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		D03FD41E2B72D7A300BB27D3 /* InformationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationPage.swift; sourceTree = "<group>"; };
 		D03FD4212B72D83800BB27D3 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		D03FD4262B73D16E00BB27D3 /* MapViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewRepresentable.swift; sourceTree = "<group>"; };
+		D03FD42A2B741F9A00BB27D3 /* AccidentResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentResponse.swift; sourceTree = "<group>"; };
+		D03FD42F2B74202800BB27D3 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +64,9 @@
 			isa = PBXGroup;
 			children = (
 				D03FD4182B71A64800BB27D3 /* App */,
-				D03FD4202B72D82800BB27D3 /* Manager */,
 				D03FD4192B71A65E00BB27D3 /* View */,
+				D03FD4292B741F8B00BB27D3 /* Model */,
+				D03FD4202B72D82800BB27D3 /* Manager */,
 				D03FD40E2B71A5EF00BB27D3 /* Assets.xcassets */,
 				D03FD4102B71A5EF00BB27D3 /* Preview Content */,
 			);
@@ -96,8 +101,8 @@
 		D03FD41A2B71A85B00BB27D3 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				D03FD40C2B71A5EE00BB27D3 /* HomeView.swift */,
-				D03FD41B2B71A86E00BB27D3 /* EarthquakeCell.swift */,
+				D03FD42E2B74201D00BB27D3 /* ViewModel */,
+				D03FD42C2B74201300BB27D3 /* View */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -117,6 +122,39 @@
 				D03FD4262B73D16E00BB27D3 /* MapViewRepresentable.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		D03FD4292B741F8B00BB27D3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D03FD42A2B741F9A00BB27D3 /* AccidentResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D03FD42C2B74201300BB27D3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D03FD42D2B74201900BB27D3 /* Cell */,
+				D03FD40C2B71A5EE00BB27D3 /* HomeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D03FD42D2B74201900BB27D3 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D03FD41B2B71A86E00BB27D3 /* EarthquakeCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		D03FD42E2B74201D00BB27D3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D03FD42F2B74202800BB27D3 /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,9 +230,11 @@
 				D03FD40D2B71A5EE00BB27D3 /* HomeView.swift in Sources */,
 				D03FD41C2B71A86E00BB27D3 /* EarthquakeCell.swift in Sources */,
 				D03FD4222B72D83800BB27D3 /* LocationManager.swift in Sources */,
+				D03FD4302B74202800BB27D3 /* HomeViewModel.swift in Sources */,
 				D03FD40B2B71A5EE00BB27D3 /* EarthQuakeApp.swift in Sources */,
 				D03FD4272B73D16E00BB27D3 /* MapViewRepresentable.swift in Sources */,
 				D03FD41F2B72D7A300BB27D3 /* InformationPage.swift in Sources */,
+				D03FD42B2B741F9A00BB27D3 /* AccidentResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
