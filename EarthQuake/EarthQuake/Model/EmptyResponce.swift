@@ -8,8 +8,8 @@
 import Foundation
 
 
-// MARK: - Accident
-struct AccidentResponse: Codable {
+// MARK: - EmptyResponce
+struct EmptyResponce: Codable {
     let type: String
     let metadata: Metadata
     let features: [Feature]
@@ -43,7 +43,7 @@ struct Properties: Codable {
     let url, detail: String
     let felt: Int?
     let cdi, mmi: Double?
-    let alert: Alert?
+    let alert: String?
     let status: Status
     let tsunami, sig: Int
     let net: Net
@@ -56,19 +56,15 @@ struct Properties: Codable {
     let title: String
 }
 
-enum Alert: String, Codable {
-    case green = "green"
-    case red = "red"
-    case yellow = "yellow"
-}
-
 enum MagType: String, Codable {
     case mb = "mb"
-    case mwr = "mwr"
+    case ml = "ml"
     case mww = "mww"
 }
 
 enum Net: String, Codable {
+    case hv = "hv"
+    case ok = "ok"
     case us = "us"
 }
 

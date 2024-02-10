@@ -10,7 +10,13 @@ import SwiftUI
 struct HomeView: View {
     
     // MARK: Properties
-    @StateObject private var viewModel = HomeViewModel()
+    
+    @StateObject private var viewModel: HomeViewModel
+    
+    init() {
+        let earthquakeServiceImpl = EarthquakeServiceImpl(networkService: NetworkService<EarthquakeEndPoint>())
+        self._viewModel = StateObject(wrappedValue: HomeViewModel(earthquakeService: earthquakeServiceImpl))
+    }
     
     // MARK: View
     var body: some View {
@@ -48,12 +54,7 @@ struct HomeView: View {
             })
             .toolbarBackground(.visible, for: .navigationBar)
         }.onAppear(perform: {
-            viewModel.getAccidents()
-        })
-        .onReceive(LocationManager.shared.$userCurrentLocation, perform: { userLocation in
-            if let userLocation = userLocation {
-                viewModel.userLocation = userLocation
-            }
+            viewModel.getLatestAccidents()
         })
     }
 }
