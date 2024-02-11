@@ -11,12 +11,7 @@ struct HomeView: View {
     
     // MARK: Properties
     
-    @StateObject private var viewModel: HomeViewModel
-    
-    init() {
-        let earthquakeServiceImpl = EarthquakeServiceImpl(networkService: NetworkService<EarthquakeEndPoint>())
-        self._viewModel = StateObject(wrappedValue: HomeViewModel(earthquakeService: earthquakeServiceImpl))
-    }
+    @EnvironmentObject private var viewModel: HomeViewModel
     
     // MARK: View
     var body: some View {
@@ -56,6 +51,11 @@ struct HomeView: View {
         }.onAppear(perform: {
             viewModel.getLatestAccidents()
         })
+        .onReceive(LocationManager.shared.$userLocation) { location in
+            if let location = location {
+                viewModel.userLocation = location
+            }
+        }
     }
 }
 

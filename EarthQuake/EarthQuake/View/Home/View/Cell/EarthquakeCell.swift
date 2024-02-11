@@ -9,7 +9,9 @@ import SwiftUI
 
 struct EarthquakeCell: View {
     // MARK: Properties
+    
     var feature: Feature
+    @EnvironmentObject private var viewModel: HomeViewModel
     
     // MARK: View
     var body: some View {
@@ -21,41 +23,38 @@ struct EarthquakeCell: View {
                 .frame(width: 30, height: 30)
                 .padding(.top)
             
-            HStack(spacing: 20) {
+            HStack {
                 VStack(alignment: .leading) {
-                    Text("22 km from your position")
+                    Text(
+                        "\(viewModel.calculateDistance(latitude: feature.geometry.coordinates[1], longitude: feature.geometry.coordinates[0]).description) km away from your position")
+                    .multilineTextAlignment(.leading)
+                    .font(.callout)
                         .fontWeight(.semibold)
                     Text(feature.properties.place)
+                        .font(.caption)
+                        .frame(maxWidth: .infinity,
+                               alignment: .leading)
                         .foregroundStyle(.gray)
-                    Text("41 min ago, 3:30 AM")
+                        .multilineTextAlignment(.leading)
+                    Text("")
+                        .convertDate(date: feature.properties.time)
                         .foregroundStyle(.gray)
+                        .font(.caption)
                 }
                 
                 VStack {
                     Text(feature.properties.mag.description)
-                        .font(.system(size: 75))
+                        .font(.largeTitle)
                         .fontWeight(.semibold)
                     Text("Magnitude")
                 }
+                .padding(.trailing, 10)
                 
-                VStack(spacing: 0) {
-                    Image(systemName: "ipodshuffle.gen3")
-                        .resizable()
-                        .frame(width: 20, height: 30)
-                        .background(.red)
-                    Image(systemName: "ipodshuffle.gen3")
-                        .resizable()
-                        .frame(width: 20, height: 30)
-                        .background(.orange)
-                    Image(systemName: "ipodshuffle.gen3")
-                        .resizable()
-                        .frame(width: 20, height: 30)
-                        .background(.green)
-                }
             }
         }
         .frame(maxWidth: .infinity)
         .padding(.leading, 10)
+        .padding(.bottom, 10)
     }
 }
 
@@ -65,7 +64,7 @@ struct EarthquakeCell: View {
                     Feature(
                         type: FeatureType(rawValue: "Feature")!,
                         properties: Properties(
-                            mag: 5.1,
+                            mag: 5.19,
                             place: "622222 km SSE of Akkeshi, Japan",
                             time: 1706045629390,
                             updated: 1706047205040,

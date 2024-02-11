@@ -27,6 +27,7 @@
 		D07AC2F22B76E135009E6899 /* ParsableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07AC2F12B76E135009E6899 /* ParsableError.swift */; };
 		D07AC2F52B76E193009E6899 /* EarthquakeEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07AC2F42B76E193009E6899 /* EarthquakeEndPoint.swift */; };
 		D07AC2F72B76E87C009E6899 /* EarthquakeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07AC2F62B76E87C009E6899 /* EarthquakeService.swift */; };
+		D07AC2F92B76FF3B009E6899 /* TextDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07AC2F82B76FF3B009E6899 /* TextDate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		D07AC2F12B76E135009E6899 /* ParsableError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsableError.swift; sourceTree = "<group>"; };
 		D07AC2F42B76E193009E6899 /* EarthquakeEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeEndPoint.swift; sourceTree = "<group>"; };
 		D07AC2F62B76E87C009E6899 /* EarthquakeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeService.swift; sourceTree = "<group>"; };
+		D07AC2F82B76FF3B009E6899 /* TextDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				D03FD4292B741F8B00BB27D3 /* Model */,
 				D07AC2E02B76CFFB009E6899 /* Services */,
 				D03FD4202B72D82800BB27D3 /* Manager */,
+				D07AC2FA2B770041009E6899 /* Extension */,
 				D03FD40E2B71A5EF00BB27D3 /* Assets.xcassets */,
 				D03FD4102B71A5EF00BB27D3 /* Preview Content */,
 			);
@@ -219,6 +222,14 @@
 			path = Earthquake;
 			sourceTree = "<group>";
 		};
+		D07AC2FA2B770041009E6899 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D07AC2F82B76FF3B009E6899 /* TextDate.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -298,6 +309,7 @@
 				D03FD4222B72D83800BB27D3 /* LocationManager.swift in Sources */,
 				D07AC2E92B76D92F009E6899 /* NetworkResult.swift in Sources */,
 				D03FD4302B74202800BB27D3 /* HomeViewModel.swift in Sources */,
+				D07AC2F92B76FF3B009E6899 /* TextDate.swift in Sources */,
 				D07AC2E52B76D055009E6899 /* API.swift in Sources */,
 				D03FD40B2B71A5EE00BB27D3 /* EarthQuakeApp.swift in Sources */,
 				D07AC2E22B76D003009E6899 /* NetworkService.swift in Sources */,

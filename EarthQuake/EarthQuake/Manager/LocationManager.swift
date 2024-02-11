@@ -14,6 +14,7 @@ final class LocationManager: NSObject, ObservableObject {
     // MARK: Properties
     static let shared = LocationManager()
     private let locationManager = CLLocationManager()
+    @Published var userLocation: CLLocationCoordinate2D?
     
     // MARK: Init
     override init() {
@@ -29,6 +30,8 @@ final class LocationManager: NSObject, ObservableObject {
 // MARK: CLLocationManagerDelegate
 extension LocationManager: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.first else { return }
+        self.userLocation = location.coordinate
         self.locationManager.stopUpdatingLocation()
     }
 }
