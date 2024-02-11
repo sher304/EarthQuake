@@ -12,7 +12,7 @@ extension Text {
     public func convertDate(date: Int) -> Text {
         let date = Date(timeIntervalSince1970: TimeInterval(date) / 1000)
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMMM dd, yyyy HH:mm"
+        dateFormatter.dateFormat = "MMMM dd, HH:mm"
         return Text(dateFormatter.string(from: date))
     }
 }
