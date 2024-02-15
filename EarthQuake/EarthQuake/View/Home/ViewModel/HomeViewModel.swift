@@ -51,6 +51,5 @@ final class HomeViewModel: NSObject, ObservableObject {
         let destination = CLLocation(latitude: latitude, longitude: longitude)
         let distanceInKm = Int(userLocation.distance(from: destination) / 1000)
         return distanceInKm
-    }
-    
+    }    
 }

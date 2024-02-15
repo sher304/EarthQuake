@@ -22,23 +22,20 @@ struct MapViewRepresentable: UIViewRepresentable {
         mapView.isRotateEnabled = false
         return mapView
     }
-    
+
     // MARK: Update View
     func updateUIView(_ uiView: UIViewType, context: Context) {
         if let selectedLocation = selectedLocation {
             context.coordinator.addSelectAnnotation(coordinate: selectedLocation)
-            let region = MKCoordinateRegion(
-                center: selectedLocation,
-                span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
-            mapView.setRegion(region, animated: true)
+            let region = MKCoordinateRegion(center: selectedLocation, span: mapView.region.span)
+            self.mapView.setRegion(region, animated: true)
         }
     }
-    
+
     // MARK: Make Coordinator
     func makeCoordinator() -> MapCoordinator {
         return MapCoordinator(parent: self)
     }
-    
 }
 
 
@@ -51,6 +48,7 @@ extension MapViewRepresentable {
         // MARK: Properties
         let parent: MapViewRepresentable
         var currentRegion: MKCoordinateRegion?
+        var userLocation: CLLocationCoordinate2D?
         
         
         // MARK: Init
@@ -61,6 +59,7 @@ extension MapViewRepresentable {
         
         // MARK: didUpdate
         func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+            self.userLocation = userLocation.coordinate
             let selectedLocation = parent.selectedLocation
             let region = MKCoordinateRegion(
                 center:
