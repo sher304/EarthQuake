@@ -16,6 +16,11 @@ struct HomeView: View {
     var body: some View {
         NavigationStack {
             ZStack {
+                if viewModel.isEmpty {
+                    Text("Nothing new...")
+                        .fontWeight(.semibold)
+                        .font(.title)
+                }
                 ScrollViewReader { reader in
                     ScrollView {
                         LazyVStack {

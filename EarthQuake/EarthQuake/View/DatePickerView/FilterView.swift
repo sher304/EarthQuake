@@ -9,10 +9,7 @@ import SwiftUI
 
 struct FilterView: View {
     var hideParentView: () -> Void
-    var viewModel: HomeViewModel
-    @State private var startDate = Date()
-    @State private var endDate = Date()
-    @State private var magnitude = 5
+    @ObservedObject var viewModel: HomeViewModel
     
     var body: some View {
         ZStack(alignment: .topTrailing) {
@@ -23,14 +20,14 @@ struct FilterView: View {
                     VStack {
                         Text("From")
                             .fontWeight(.semibold)
-                        DatePicker("", selection: $startDate, in: ...Date.now, displayedComponents: .date)
+                        DatePicker("", selection: $viewModel.startDate, in: ...Date.now, displayedComponents: .date)
                             .datePickerStyle(.compact)
                             .labelsHidden()
                     }
                     VStack {
                         Text("To")
                             .fontWeight(.semibold)
-                        DatePicker("", selection: $endDate, in: ...Date.now, displayedComponents: .date)
+                        DatePicker("", selection: $viewModel.endDate, in: ...Date.now, displayedComponents: .date)
                             .datePickerStyle(.compact)
                             .labelsHidden()
                     }
@@ -38,18 +35,16 @@ struct FilterView: View {
                 
                 // Magnitude Change
                 HStack {
-                    Text("Minimum magnitude: \(magnitude)")
+                    Text("Minimum magnitude: \($viewModel.magnitude.wrappedValue)")
                         .fontWeight(.semibold)
-                    Stepper(value: $magnitude, in: 0...8) {}
+                    Stepper(value: $viewModel.magnitude, in: 0...9) {}
                     .labelsHidden()
                 }
                 .padding(.top)
                 
                 // Save button
                 Button {
-                    viewModel.updateFilter(startDate: startDate,
-                                           endDate: endDate,
-                                           magnitude: magnitude)
+                    viewModel.updateFilter()
                     self.hideParentView()
                 } label: {
                     Text("Save")

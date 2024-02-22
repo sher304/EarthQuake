@@ -190,7 +190,7 @@
 		D07AC2E02B76CFFB009E6899 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				D07AC2F32B76E173009E6899 /* Earthquake */,
+				D07AC2F32B76E173009E6899 /* Endpoint */,
 				D07AC2E32B76D022009E6899 /* Network */,
 			);
 			path = Services;
@@ -219,13 +219,13 @@
 			path = Errors;
 			sourceTree = "<group>";
 		};
-		D07AC2F32B76E173009E6899 /* Earthquake */ = {
+		D07AC2F32B76E173009E6899 /* Endpoint */ = {
 			isa = PBXGroup;
 			children = (
 				D07AC2F42B76E193009E6899 /* EarthquakeEndPoint.swift */,
 				D07AC2F62B76E87C009E6899 /* EarthquakeService.swift */,
 			);
-			path = Earthquake;
+			path = Endpoint;
 			sourceTree = "<group>";
 		};
 		D07AC2FA2B770041009E6899 /* Extension */ = {

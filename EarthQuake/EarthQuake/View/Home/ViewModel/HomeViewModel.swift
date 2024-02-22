@@ -14,6 +14,11 @@ final class HomeViewModel: NSObject, ObservableObject {
     // MARK: Properties
     @Published var features: [Feature] = []
     @Published var isLoading = false
+    @Published var isEmpty = false
+    @Published var startDate = Date()
+    @Published var endDate = Date()
+    @Published var magnitude = 5
+    
     var userLocation: CLLocationCoordinate2D?
     var earthquakeService: EarthquakeService
     
@@ -25,7 +30,8 @@ final class HomeViewModel: NSObject, ObservableObject {
     
     // MARK: Func 
     func getLatestAccidents() {
-        isLoading = true
+        self.isLoading = true
+        self.features = []
         
         let dates = getDate()
         earthquakeService.getLatestEarthquake(
@@ -70,7 +76,7 @@ final class HomeViewModel: NSObject, ObservableObject {
         return distanceInKm
     }   
     
-    func updateFilter(startDate: Date, endDate: Date, magnitude: Int) {
+    func updateFilter() {
         self.isLoading = true
         self.features = []
         
@@ -79,13 +85,11 @@ final class HomeViewModel: NSObject, ObservableObject {
         let startDate = dateFormatter.string(from: startDate)
         let endDate = dateFormatter.string(from: endDate)
         
-        print(startDate, "startDate")
-        print(endDate, "endDate")
-        print(magnitude, "magnitude")
         earthquakeService.getEarthquake(startDate: startDate, EndDate: endDate, magnitude: magnitude) { [weak self] result in
             switch result {
             case .success(let model):
                 guard let data = model else { return }
+                self?.isEmpty = data.features.isEmpty ? true : false
                 var uniqueIDs = Set(self?.features.map { $0.id } ?? [])
                 data.features.forEach { feature in
                     if !uniqueIDs.contains(feature.id) {
