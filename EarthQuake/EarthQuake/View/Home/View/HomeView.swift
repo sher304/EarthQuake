@@ -9,51 +9,78 @@ import SwiftUI
 
 struct HomeView: View {
     
-    // MARK: Properties
-    
     @EnvironmentObject private var viewModel: HomeViewModel
+    @State private var scrollToTop = false
+    @State private var showFilter = false
     
-    // MARK: View
     var body: some View {
-        NavigationStack {
-            
-            ScrollView {
-                VStack {
-                    ForEach(viewModel.features, id: \.id) { feature in
-                        NavigationLink {
-                            InformationPage(feature: feature)
-                        } label: {
-                            EarthquakeCell(feature: feature)
-                                .tint(.black)
-                                .background(.white)
-                                .clipShape(
-                                    RoundedRectangle(cornerRadius: 6))
-                                .padding(.horizontal)
+        ZStack {
+            NavigationStack {
+                ScrollViewReader { reader in
+                    ScrollView {
+                        LazyVStack {
+                            ForEach(viewModel.features, id: \.id) { feature in
+                                NavigationLink {
+                                    InformationPage(feature: feature)
+                                        .id(feature.id)
+                                } label: {
+                                    EarthquakeCell(feature: feature)
+                                        .background(Color.white)
+                                        .clipShape(RoundedRectangle(cornerRadius: 6))
+                                        .padding(.horizontal)
+                                        .foregroundColor(.black)
+                                }
+                            }
+                        }.disabled(showFilter)
+                    }
+                    .environment(\.isScrollEnabled, !showFilter)
+                    .background(Color("HomeBackground"))
+                    .navigationTitle("Earthquakes")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .topBarLeading) {
+                            Button {
+                                self.showFilter.toggle()
+                            } label: {
+                                Image(systemName: "calendar.day.timeline.left")
+                            }
+                            .foregroundStyle(.black)
+                            
+                        }
+                        ToolbarItem(placement: .topBarTrailing) {
+                            Button {
+                                viewModel.getLatestAccidents()
+                                scrollToTop = true
+                                withAnimation {
+                                    reader.scrollTo(viewModel.features.first?.id ?? "", anchor: .top)
+                                }
+                            } label: {
+                                Image(systemName: "arrow.clockwise")
+                            }
+                            .foregroundStyle(.black)
+                        }
+                        
+                    }
+                    .onAppear {
+                        viewModel.getLatestAccidents()
+                    }
+                    .onReceive(LocationManager.shared.$userLocation) { location in
+                        if let location = location {
+                            viewModel.userLocation = location
                         }
                     }
                 }
             }
-            .padding(.top)
-            .background(Color("HomeBackground"))
             
-            .navigationTitle("Earchquakes")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar(content: {
-                Button {
-
-                } label: {
-                    Image(systemName: "arrow.clockwise")
-                        .foregroundStyle(.black)
+            if viewModel.isLoading {
+                LoadingView() }
+            
+            if showFilter {
+                withAnimation {
+                    FilterView(hideParentView: {
+                        self.showFilter = false
+                    }, viewModel: self.viewModel)
                 }
-                .padding(.trailing, 8)
-            })
-            .toolbarBackground(.visible, for: .navigationBar)
-        }.onAppear(perform: {
-            viewModel.getLatestAccidents()
-        })
-        .onReceive(LocationManager.shared.$userLocation) { location in
-            if let location = location {
-                viewModel.userLocation = location
             }
         }
     }

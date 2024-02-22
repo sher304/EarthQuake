@@ -13,7 +13,7 @@ struct EmptyResponce: Codable {
     let type: String
     let metadata: Metadata
     let features: [Feature]
-    let bbox: [Double]
+    let bbox: [Double]?
 }
 
 // MARK: - Feature
@@ -48,9 +48,9 @@ struct Properties: Codable {
     let tsunami, sig: Int
     let net: Net
     let code, ids, sources, types: String
-    let nst: Int
-    let dmin, rms: Double
-    let gap: Int
+    let nst: Int?
+    let dmin, rms: Double?
+    let gap: Int?
     let magType: MagType
     let type: PropertiesType
     let title: String

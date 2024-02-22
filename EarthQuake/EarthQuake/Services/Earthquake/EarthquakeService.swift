@@ -9,7 +9,10 @@ import Foundation
 
 
 protocol EarthquakeService {
-    func getLatestEarthquake(date: String, month: String, completion: @escaping(NetworkResult<EmptyResponce?>) -> Void)
+    func getLatestEarthquake(month: String,
+                             completion: @escaping(NetworkResult<EmptyResponce?>) -> Void)
+    
+    func getEarthquake(startDate: String, EndDate: String, magnitude: Int, completion: @escaping(NetworkResult<EmptyResponce?>) -> Void)
 }
 
 
@@ -21,8 +24,13 @@ final class EarthquakeServiceImpl: EarthquakeService {
         self.networkService = networkService
     }
     
-    func getLatestEarthquake(date: String, month: String, completion: @escaping (NetworkResult<EmptyResponce?>) -> Void) {
-        let endPoint = EarthquakeEndPoint.getLatestEarthquake(date: date, month: month)
+    func getLatestEarthquake(month: String, completion: @escaping (NetworkResult<EmptyResponce?>) -> Void) {
+        let endPoint = EarthquakeEndPoint.getLatestEarthquake(month: month)
+        networkService.request(enpoint: endPoint, completion: completion)
+    }
+    
+    func getEarthquake(startDate: String, EndDate: String, magnitude: Int, completion: @escaping (NetworkResult<EmptyResponce?>) -> Void) {
+        let endPoint = EarthquakeEndPoint.getEarthquake(startDate: startDate, endDate: EndDate, magnitude: magnitude.description)
         networkService.request(enpoint: endPoint, completion: completion)
     }
 }

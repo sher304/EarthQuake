@@ -10,12 +10,15 @@ import Foundation
 
 enum EarthquakeEndPoint: EndpointProtocol {
     
-    case getLatestEarthquake(date: String, month: String)
+    case getLatestEarthquake(month: String)
+    case getEarthquake(startDate: String, endDate: String, magnitude: String)
     
     var path: String {
         switch self {
-        case .getLatestEarthquake(let date, let month):
+        case .getLatestEarthquake(let month):
             return API.getLatestEarthquake + "2024-\(month)-01&endtime=2024-\(month)-31&minmagnitude=5"
+        case .getEarthquake(let startDate, let endDate, let magnitude):
+            return API.getLatestEarthquake + "\(startDate)&endtime=\(endDate)&minmagnitude=\(magnitude)"
         }
     }
 }
