@@ -13,12 +13,10 @@ struct EmptyResponce: Codable {
     let type: String
     let metadata: Metadata
     let features: [Feature]
-    let bbox: [Double]?
 }
 
 // MARK: - Feature
 struct Feature: Codable {
-    let type: FeatureType
     let properties: Properties
     let geometry: Geometry
     let id: String
@@ -26,12 +24,7 @@ struct Feature: Codable {
 
 // MARK: - Geometry
 struct Geometry: Codable {
-    let type: GeometryType
     let coordinates: [Double]
-}
-
-enum GeometryType: String, Codable {
-    case point = "Point"
 }
 
 // MARK: - Properties
@@ -39,46 +32,11 @@ struct Properties: Codable {
     let mag: Double
     let place: String
     let time, updated: Int
-    let tz: JSONNull?
     let url, detail: String
-    let felt: Int?
-    let cdi, mmi: Double?
-    let alert: String?
-    let status: Status
-    let tsunami, sig: Int
-    let net: Net
-    let code, ids, sources, types: String
-    let nst: Int?
-    let dmin, rms: Double?
-    let gap: Int?
-    let magType: MagType
-    let type: PropertiesType
+    let magType: String
     let title: String
 }
 
-enum MagType: String, Codable {
-    case mb = "mb"
-    case ml = "ml"
-    case mww = "mww"
-}
-
-enum Net: String, Codable {
-    case hv = "hv"
-    case ok = "ok"
-    case us = "us"
-}
-
-enum Status: String, Codable {
-    case reviewed = "reviewed"
-}
-
-enum PropertiesType: String, Codable {
-    case earthquake = "earthquake"
-}
-
-enum FeatureType: String, Codable {
-    case feature = "Feature"
-}
 
 // MARK: - Metadata
 struct Metadata: Codable {

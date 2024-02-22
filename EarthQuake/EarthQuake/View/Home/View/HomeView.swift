@@ -14,11 +14,12 @@ struct HomeView: View {
     @State private var showFilter = false
     
     var body: some View {
-        ZStack {
-            NavigationStack {
+        NavigationStack {
+            ZStack {
                 ScrollViewReader { reader in
                     ScrollView {
                         LazyVStack {
+                            // MARK: Cell
                             ForEach(viewModel.features, id: \.id) { feature in
                                 NavigationLink {
                                     InformationPage(feature: feature)
@@ -34,10 +35,10 @@ struct HomeView: View {
                         }.disabled(showFilter)
                     }
                     .environment(\.isScrollEnabled, !showFilter)
-                    .background(Color("HomeBackground"))
-                    .navigationTitle("Earthquakes")
-                    .navigationBarTitleDisplayMode(.inline)
+                    
+                    // MARK: Tool Bar
                     .toolbar {
+                        // MARK: "Filter Button"
                         ToolbarItem(placement: .topBarLeading) {
                             Button {
                                 self.showFilter.toggle()
@@ -48,6 +49,7 @@ struct HomeView: View {
                             
                         }
                         ToolbarItem(placement: .topBarTrailing) {
+                            // MARK: "Refresh Button"
                             Button {
                                 viewModel.getLatestAccidents()
                                 scrollToTop = true
@@ -59,28 +61,35 @@ struct HomeView: View {
                             }
                             .foregroundStyle(.black)
                         }
-                        
                     }
-                    .onAppear {
-                        viewModel.getLatestAccidents()
-                    }
-                    .onReceive(LocationManager.shared.$userLocation) { location in
-                        if let location = location {
-                            viewModel.userLocation = location
-                        }
+                }
+                
+                // MARK: Loading View
+                if viewModel.isLoading {
+                    LoadingView() }
+                
+                // MARK: Filter View
+                if showFilter {
+                    withAnimation {
+                        FilterView(hideParentView: {
+                            self.showFilter = false
+                        }, viewModel: self.viewModel)
                     }
                 }
             }
+            // Background Color
+            .background(Color("HomeBackground"))
+            // Navigation Title
+            .navigationTitle("Earthquakes")
+            .navigationBarTitleDisplayMode(.inline)
             
-            if viewModel.isLoading {
-                LoadingView() }
-            
-            if showFilter {
-                withAnimation {
-                    FilterView(hideParentView: {
-                        self.showFilter = false
-                    }, viewModel: self.viewModel)
-                }
+        }
+        .onAppear {
+            viewModel.getLatestAccidents()
+        }
+        .onReceive(LocationManager.shared.$userLocation) { location in
+            if let location = location {
+                viewModel.userLocation = location
             }
         }
     }
