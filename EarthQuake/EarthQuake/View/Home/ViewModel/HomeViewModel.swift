@@ -13,6 +13,7 @@ final class HomeViewModel: NSObject, ObservableObject {
     
     // MARK: Properties
     @Published var features: [Feature] = []
+    @Published var isLoading = false
     var userLocation: CLLocationCoordinate2D?
     var earthquakeService: EarthquakeService
     
@@ -24,23 +25,39 @@ final class HomeViewModel: NSObject, ObservableObject {
     
     // MARK: Func 
     func getLatestAccidents() {
+        isLoading = true
+        
+        let dates = getDate()
+        earthquakeService.getLatestEarthquake(
+            month: "\(dates[1])",
+            completion: { [weak self] result in
+                switch result {
+                case .success(let model):
+                    guard let data = model else { return }
+                    var uniqueIDs = Set(self?.features.map { $0.id } ?? [])
+                    data.features.forEach { feature in
+                        if !uniqueIDs.contains(feature.id) {
+                            self?.features.append(feature)
+                            uniqueIDs.insert(feature.id)
+                        }
+                    }
+                    
+                    self?.isLoading = false
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            })
+    }
+    
+    func getDate() -> [String] {
         let date = Date()
         let calendar = Calendar.current
         let components = calendar.dateComponents([.year, .month, .day], from: date)
         let year = components.year?.description ?? ""
         let month = components.month?.description ?? ""
         let day = components.day?.description ?? ""
-        earthquakeService.getLatestEarthquake(
-            date: "\(year)-\(month)-\(day)", month: "\(month)",
-            completion: { [weak self] result in
-                switch result {
-                case .success(let model):
-                    guard let data = model else { return }
-                    self?.features.append(contentsOf: data.features)
-                case .failure(let error):
-                    print(error.localizedDescription)
-                }
-            })
+
+        return [year, month, day]
     }
     
     func calculateDistance(latitude: Double, longitude: Double) -> Int {
@@ -51,6 +68,35 @@ final class HomeViewModel: NSObject, ObservableObject {
         let destination = CLLocation(latitude: latitude, longitude: longitude)
         let distanceInKm = Int(userLocation.distance(from: destination) / 1000)
         return distanceInKm
-    }
+    }   
     
+    func updateFilter(startDate: Date, endDate: Date, magnitude: Int) {
+        self.isLoading = true
+        self.features = []
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let startDate = dateFormatter.string(from: startDate)
+        let endDate = dateFormatter.string(from: endDate)
+        
+        print(startDate, "startDate")
+        print(endDate, "endDate")
+        print(magnitude, "magnitude")
+        earthquakeService.getEarthquake(startDate: startDate, EndDate: endDate, magnitude: magnitude) { [weak self] result in
+            switch result {
+            case .success(let model):
+                guard let data = model else { return }
+                var uniqueIDs = Set(self?.features.map { $0.id } ?? [])
+                data.features.forEach { feature in
+                    if !uniqueIDs.contains(feature.id) {
+                        self?.features.append(feature)
+                        uniqueIDs.insert(feature.id)
+                    }
+                }
+                self?.isLoading = false
+            case .failure(let error):
+                print(error, "error Update Filter")
+            }
+        }
+    }
 }

@@ -28,6 +28,8 @@
 		D07AC2F52B76E193009E6899 /* EarthquakeEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07AC2F42B76E193009E6899 /* EarthquakeEndPoint.swift */; };
 		D07AC2F72B76E87C009E6899 /* EarthquakeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07AC2F62B76E87C009E6899 /* EarthquakeService.swift */; };
 		D07AC2F92B76FF3B009E6899 /* TextDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07AC2F82B76FF3B009E6899 /* TextDate.swift */; };
+		D07AC2FF2B7ECE6B009E6899 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07AC2FE2B7ECE6B009E6899 /* LoadingView.swift */; };
+		D07AC3022B83F635009E6899 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07AC3012B83F635009E6899 /* FilterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +55,8 @@
 		D07AC2F42B76E193009E6899 /* EarthquakeEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeEndPoint.swift; sourceTree = "<group>"; };
 		D07AC2F62B76E87C009E6899 /* EarthquakeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeService.swift; sourceTree = "<group>"; };
 		D07AC2F82B76FF3B009E6899 /* TextDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDate.swift; sourceTree = "<group>"; };
+		D07AC2FE2B7ECE6B009E6899 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		D07AC3012B83F635009E6899 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +120,8 @@
 		D03FD4192B71A65E00BB27D3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D07AC3002B83F629009E6899 /* DatePickerView */,
+				D07AC2FB2B7ECE4E009E6899 /* LoadingView */,
 				D03FD41D2B72D77A00BB27D3 /* InformationPage */,
 				D03FD41A2B71A85B00BB27D3 /* Home */,
 			);
@@ -230,6 +236,22 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		D07AC2FB2B7ECE4E009E6899 /* LoadingView */ = {
+			isa = PBXGroup;
+			children = (
+				D07AC2FE2B7ECE6B009E6899 /* LoadingView.swift */,
+			);
+			path = LoadingView;
+			sourceTree = "<group>";
+		};
+		D07AC3002B83F629009E6899 /* DatePickerView */ = {
+			isa = PBXGroup;
+			children = (
+				D07AC3012B83F635009E6899 /* FilterView.swift */,
+			);
+			path = DatePickerView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -308,11 +330,13 @@
 				D07AC2F02B76DDB8009E6899 /* EmptyResponse.swift in Sources */,
 				D03FD4222B72D83800BB27D3 /* LocationManager.swift in Sources */,
 				D07AC2E92B76D92F009E6899 /* NetworkResult.swift in Sources */,
+				D07AC3022B83F635009E6899 /* FilterView.swift in Sources */,
 				D03FD4302B74202800BB27D3 /* HomeViewModel.swift in Sources */,
 				D07AC2F92B76FF3B009E6899 /* TextDate.swift in Sources */,
 				D07AC2E52B76D055009E6899 /* API.swift in Sources */,
 				D03FD40B2B71A5EE00BB27D3 /* EarthQuakeApp.swift in Sources */,
 				D07AC2E22B76D003009E6899 /* NetworkService.swift in Sources */,
+				D07AC2FF2B7ECE6B009E6899 /* LoadingView.swift in Sources */,
 				D03FD4272B73D16E00BB27D3 /* MapViewRepresentable.swift in Sources */,
 				D03FD41F2B72D7A300BB27D3 /* InformationPage.swift in Sources */,
 				D07AC2E72B76D82B009E6899 /* Endpoint.swift in Sources */,
@@ -455,6 +479,7 @@
 				DEVELOPMENT_TEAM = K8M5FXDJPU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please fuck me daddy";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -485,6 +510,7 @@
 				DEVELOPMENT_TEAM = K8M5FXDJPU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please fuck me daddy";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
