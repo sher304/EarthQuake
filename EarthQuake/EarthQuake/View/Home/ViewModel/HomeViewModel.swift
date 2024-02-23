@@ -84,7 +84,7 @@ final class HomeViewModel: NSObject, ObservableObject {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let startDate = dateFormatter.string(from: startDate)
         let endDate = dateFormatter.string(from: endDate)
-        
+        print(startDate, endDate, magnitude)
         earthquakeService.getEarthquake(startDate: startDate, EndDate: endDate, magnitude: magnitude) { [weak self] result in
             switch result {
             case .success(let model):

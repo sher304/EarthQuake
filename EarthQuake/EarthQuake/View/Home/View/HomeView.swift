@@ -31,7 +31,7 @@ struct HomeView: View {
                                         .id(feature.id)
                                 } label: {
                                     EarthquakeCell(feature: feature)
-                                        .background(Color.white)
+                                        .background(Color("WhiteToBlack"))
                                         .clipShape(RoundedRectangle(cornerRadius: 6))
                                         .padding(.horizontal)
                                         .foregroundColor(.black)
@@ -50,7 +50,6 @@ struct HomeView: View {
                             } label: {
                                 Image(systemName: "calendar.day.timeline.left")
                             }
-                            .foregroundStyle(.black)
                             
                         }
                         ToolbarItem(placement: .topBarTrailing) {
@@ -64,7 +63,6 @@ struct HomeView: View {
                             } label: {
                                 Image(systemName: "arrow.clockwise")
                             }
-                            .foregroundStyle(.black)
                         }
                     }
                 }
@@ -83,12 +81,14 @@ struct HomeView: View {
                 }
             }
             // Background Color
-            .background(Color("HomeBackground"))
+//            .background(Color("HomeBackground"))
+            .background(Color("WhiteToBlack"))
             // Navigation Title
             .navigationTitle("Earthquakes")
-            .navigationBarTitleDisplayMode(.inline)
-            
+            .navigationBarTitleDisplayMode(.large)
         }
+//        .navigationBarColor(.clear)
+        .foregroundStyle(Color("BlackToWhite"))
         .onAppear {
             viewModel.getLatestAccidents()
         }
