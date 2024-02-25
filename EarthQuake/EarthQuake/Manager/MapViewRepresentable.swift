@@ -55,8 +55,6 @@ extension MapViewRepresentable {
         
         // MARK: Select Annotatiton
         func addSelectAnnotation(coordinate: CLLocationCoordinate2D) {
-            let customAnnotation = CustomCircleAnnotation(annotation: nil, reuseIdentifier: "CustomAnnotation")
-
             let annotationPoint = MKPointAnnotation()
             annotationPoint.coordinate = coordinate
             parent.mapView.addAnnotation(annotationPoint)
@@ -67,7 +65,8 @@ extension MapViewRepresentable {
         func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
             guard annotation is MKPointAnnotation else { return nil }
             
-            let annotationView = CustomCircleAnnotation(annotation: annotation, reuseIdentifier: "CustomAnnotation")
+            let annotationView = CustomCircleAnnotation(annotation: annotation,
+                                                        reuseIdentifier: "CustomAnnotation")
             annotationView.canShowCallout = true
             return annotationView
         }

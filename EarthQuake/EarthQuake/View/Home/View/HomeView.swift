@@ -41,15 +41,17 @@ struct HomeView: View {
                             // MARK: Cell
                             ForEach(viewModel.features, id: \.id) { feature in
                                 NavigationLink {
-//                                    MapInformationPage(feature: feature)
-//                                        .id(feature.id)
                                     MapInformationPage(feature: feature)
                                 } label: {
-                                    EarthquakeCell(feature: feature)
-                                        .background(Color("WhiteToBlack"))
-                                        .clipShape(RoundedRectangle(cornerRadius: 6))
-                                        .padding(.horizontal)
-                                        .foregroundColor(.black)
+                                    VStack {
+                                        EarthquakeCell(feature: feature)
+                                            .background(Color("WhiteToBlack"))
+                                            .clipShape(RoundedRectangle(cornerRadius: 6))
+                                            .padding(.horizontal)
+                                            .foregroundColor(.black)
+                                        Divider()
+                                            .padding(.horizontal)
+                                    }
                                 }
                             }
                         }.disabled(showFilter)
