@@ -10,7 +10,7 @@ import SwiftUI
 struct LoadingView: View {
     var body: some View {
         ZStack {
-            Color("HomeBackground").ignoresSafeArea(.all)
+            Color("WhiteToBlack").ignoresSafeArea(.all)
             
             ProgressView()
                 .progressViewStyle(.circular)

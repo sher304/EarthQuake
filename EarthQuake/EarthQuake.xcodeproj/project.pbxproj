@@ -12,7 +12,7 @@
 		D03FD40F2B71A5EF00BB27D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D03FD40E2B71A5EF00BB27D3 /* Assets.xcassets */; };
 		D03FD4122B71A5EF00BB27D3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D03FD4112B71A5EF00BB27D3 /* Preview Assets.xcassets */; };
 		D03FD41C2B71A86E00BB27D3 /* EarthquakeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03FD41B2B71A86E00BB27D3 /* EarthquakeCell.swift */; };
-		D03FD41F2B72D7A300BB27D3 /* InformationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03FD41E2B72D7A300BB27D3 /* InformationPage.swift */; };
+		D03FD41F2B72D7A300BB27D3 /* MapInformationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03FD41E2B72D7A300BB27D3 /* MapInformationPage.swift */; };
 		D03FD4222B72D83800BB27D3 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03FD4212B72D83800BB27D3 /* LocationManager.swift */; };
 		D03FD4272B73D16E00BB27D3 /* MapViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03FD4262B73D16E00BB27D3 /* MapViewRepresentable.swift */; };
 		D03FD42B2B741F9A00BB27D3 /* EmptyResponce.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03FD42A2B741F9A00BB27D3 /* EmptyResponce.swift */; };
@@ -30,6 +30,9 @@
 		D07AC2F92B76FF3B009E6899 /* TextDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07AC2F82B76FF3B009E6899 /* TextDate.swift */; };
 		D07AC2FF2B7ECE6B009E6899 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07AC2FE2B7ECE6B009E6899 /* LoadingView.swift */; };
 		D07AC3022B83F635009E6899 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07AC3012B83F635009E6899 /* FilterView.swift */; };
+		D09DC1A72B88CF8A007967C4 /* NavigationBar+BG.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09DC1A62B88CF8A007967C4 /* NavigationBar+BG.swift */; };
+		D09DC1A92B8B75BA007967C4 /* MKCoordinator+Swap.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09DC1A82B8B75BA007967C4 /* MKCoordinator+Swap.swift */; };
+		D09DC1AB2B8B9F40007967C4 /* CustomCircleAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09DC1AA2B8B9F40007967C4 /* CustomCircleAnnotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +42,7 @@
 		D03FD40E2B71A5EF00BB27D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D03FD4112B71A5EF00BB27D3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D03FD41B2B71A86E00BB27D3 /* EarthquakeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeCell.swift; sourceTree = "<group>"; };
-		D03FD41E2B72D7A300BB27D3 /* InformationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationPage.swift; sourceTree = "<group>"; };
+		D03FD41E2B72D7A300BB27D3 /* MapInformationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapInformationPage.swift; sourceTree = "<group>"; };
 		D03FD4212B72D83800BB27D3 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		D03FD4262B73D16E00BB27D3 /* MapViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewRepresentable.swift; sourceTree = "<group>"; };
 		D03FD42A2B741F9A00BB27D3 /* EmptyResponce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyResponce.swift; sourceTree = "<group>"; };
@@ -57,6 +60,9 @@
 		D07AC2F82B76FF3B009E6899 /* TextDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDate.swift; sourceTree = "<group>"; };
 		D07AC2FE2B7ECE6B009E6899 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		D07AC3012B83F635009E6899 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
+		D09DC1A62B88CF8A007967C4 /* NavigationBar+BG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationBar+BG.swift"; sourceTree = "<group>"; };
+		D09DC1A82B8B75BA007967C4 /* MKCoordinator+Swap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKCoordinator+Swap.swift"; sourceTree = "<group>"; };
+		D09DC1AA2B8B9F40007967C4 /* CustomCircleAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCircleAnnotation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,7 +146,7 @@
 		D03FD41D2B72D77A00BB27D3 /* InformationPage */ = {
 			isa = PBXGroup;
 			children = (
-				D03FD41E2B72D7A300BB27D3 /* InformationPage.swift */,
+				D03FD41E2B72D7A300BB27D3 /* MapInformationPage.swift */,
 			);
 			path = InformationPage;
 			sourceTree = "<group>";
@@ -190,7 +196,7 @@
 		D07AC2E02B76CFFB009E6899 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				D07AC2F32B76E173009E6899 /* Earthquake */,
+				D07AC2F32B76E173009E6899 /* Endpoint */,
 				D07AC2E32B76D022009E6899 /* Network */,
 			);
 			path = Services;
@@ -219,19 +225,22 @@
 			path = Errors;
 			sourceTree = "<group>";
 		};
-		D07AC2F32B76E173009E6899 /* Earthquake */ = {
+		D07AC2F32B76E173009E6899 /* Endpoint */ = {
 			isa = PBXGroup;
 			children = (
 				D07AC2F42B76E193009E6899 /* EarthquakeEndPoint.swift */,
 				D07AC2F62B76E87C009E6899 /* EarthquakeService.swift */,
 			);
-			path = Earthquake;
+			path = Endpoint;
 			sourceTree = "<group>";
 		};
 		D07AC2FA2B770041009E6899 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				D07AC2F82B76FF3B009E6899 /* TextDate.swift */,
+				D09DC1A62B88CF8A007967C4 /* NavigationBar+BG.swift */,
+				D09DC1A82B8B75BA007967C4 /* MKCoordinator+Swap.swift */,
+				D09DC1AA2B8B9F40007967C4 /* CustomCircleAnnotation.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -337,11 +346,14 @@
 				D03FD40B2B71A5EE00BB27D3 /* EarthQuakeApp.swift in Sources */,
 				D07AC2E22B76D003009E6899 /* NetworkService.swift in Sources */,
 				D07AC2FF2B7ECE6B009E6899 /* LoadingView.swift in Sources */,
+				D09DC1AB2B8B9F40007967C4 /* CustomCircleAnnotation.swift in Sources */,
 				D03FD4272B73D16E00BB27D3 /* MapViewRepresentable.swift in Sources */,
-				D03FD41F2B72D7A300BB27D3 /* InformationPage.swift in Sources */,
+				D09DC1A92B8B75BA007967C4 /* MKCoordinator+Swap.swift in Sources */,
+				D03FD41F2B72D7A300BB27D3 /* MapInformationPage.swift in Sources */,
 				D07AC2E72B76D82B009E6899 /* Endpoint.swift in Sources */,
 				D07AC2F52B76E193009E6899 /* EarthquakeEndPoint.swift in Sources */,
 				D03FD42B2B741F9A00BB27D3 /* EmptyResponce.swift in Sources */,
+				D09DC1A72B88CF8A007967C4 /* NavigationBar+BG.swift in Sources */,
 				D07AC2EB2B76DBF6009E6899 /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

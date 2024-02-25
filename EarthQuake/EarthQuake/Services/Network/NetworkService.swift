@@ -17,7 +17,7 @@ final class NetworkService<Endpoint: EndpointProtocol> {
         
         let url = URLComponents(string: enpoint.baseURL + enpoint.path)
         guard let resultURL = url?.url else { return }
-        var request = URLRequest(url: resultURL)
+        let request = URLRequest(url: resultURL)
         
         URLSession.shared.dataTask(with: request) { data, response , error in
             
@@ -28,7 +28,9 @@ final class NetworkService<Endpoint: EndpointProtocol> {
                 return
             }
             
-            guard let data = data else { return }
+            guard let data = data else { 
+                print("error data")
+                return }
             
             defer {
                 DispatchQueue.main.async {

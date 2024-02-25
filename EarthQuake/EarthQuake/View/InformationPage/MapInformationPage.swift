@@ -8,7 +8,7 @@
 import SwiftUI
 import MapKit
 
-struct InformationPage: View {
+struct MapInformationPage: View {
     
     var feature: Feature
     @State private var selectedLocation: CLLocationCoordinate2D?
@@ -17,26 +17,27 @@ struct InformationPage: View {
     var body: some View {
         ZStack {
             MapViewRepresentable(selectedLocation: $selectedLocation)
-                .ignoresSafeArea()
-        }.onAppear(perform: {
-            remakeLocation()
+        }
+        .ignoresSafeArea()
+        .onAppear(perform: {
+            setLocation()
         })
-        
     }
+    
     
     // MARK: Func
     
-    private func remakeLocation() {
+    private func setLocation() {
         let coordinates = self.feature.geometry.coordinates
         let longitude = coordinates[0]
         let latitude = coordinates[1]
-        selectedLocation = CLLocationCoordinate2D(latitude: latitude,
-                                                  longitude: longitude)
+        self.selectedLocation = CLLocationCoordinate2D(latitude: latitude,
+                                                       longitude: longitude)
     }
 }
 
 #Preview {
-    InformationPage(feature:
+    MapInformationPage(feature:
                         Feature(
                             properties: Properties(mag: 4.2, place: "s", time: 123, updated: 3, url: "Asd", detail: "s", magType: "mww", title: "3"),
                             geometry: Geometry(
@@ -44,6 +45,5 @@ struct InformationPage: View {
                             ),
                             id: "us7000ltaz"
                         )
-                       
-        )
+    )
 }

@@ -30,6 +30,7 @@ struct EarthquakeCell: View {
                     .multilineTextAlignment(.leading)
                     .font(.callout)
                     .fontWeight(.semibold)
+                    .foregroundStyle(Color("BlackToWhite"))
                     Text(feature.properties.place)
                         .font(.caption)
                         .frame(maxWidth: .infinity,
@@ -48,9 +49,11 @@ struct EarthquakeCell: View {
                         .fontWeight(.semibold)
                     Text("Magnitude")
                 }
+                .foregroundStyle(Color("BlackToWhite"))
                 .padding(.trailing, 10)
                 
             }
+            Divider()
         }
         .frame(maxWidth: .infinity)
         .padding(.leading, 10)

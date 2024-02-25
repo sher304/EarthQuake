@@ -9,26 +9,25 @@ import MapKit
 import SwiftUI
 
 struct MapViewRepresentable: UIViewRepresentable {
-    
     // MARK: Properties
     let mapView = MKMapView()
     @Binding var selectedLocation: CLLocationCoordinate2D?
     
     // MARK: Make View
-    func makeUIView(context: Context) -> some UIView {
+    func makeUIView(context: Context) -> MKMapView {
         mapView.delegate = context.coordinator
         mapView.showsUserLocation = true
         mapView.userTrackingMode = .follow
         mapView.isRotateEnabled = false
         return mapView
     }
-
+    
     // MARK: Update View
-    func updateUIView(_ uiView: UIViewType, context: Context) {
+    func updateUIView(_ mapView: MKMapView, context: Context) {
         if let selectedLocation = selectedLocation {
+            let region = MKCoordinateRegion(center: selectedLocation, span: MKCoordinateSpan(latitudeDelta: 5, longitudeDelta: 5))
+            mapView.setRegion(region, animated: true)
             context.coordinator.addSelectAnnotation(coordinate: selectedLocation)
-            let region = MKCoordinateRegion(center: selectedLocation, span: mapView.region.span)
-            self.mapView.setRegion(region, animated: true)
         }
     }
 
@@ -47,9 +46,6 @@ extension MapViewRepresentable {
         
         // MARK: Properties
         let parent: MapViewRepresentable
-        var currentRegion: MKCoordinateRegion?
-        var userLocation: CLLocationCoordinate2D?
-        
         
         // MARK: Init
         init(parent: MapViewRepresentable) {
@@ -57,29 +53,23 @@ extension MapViewRepresentable {
             super.init()
         }
         
-        // MARK: didUpdate
-        func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-            self.userLocation = userLocation.coordinate
-            let selectedLocation = parent.selectedLocation
-            let region = MKCoordinateRegion(
-                center:
-                    CLLocationCoordinate2D(
-                        latitude: selectedLocation?.latitude ?? 0,
-                        longitude: selectedLocation?.longitude ?? 0),
-                span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
-            self.currentRegion = region
-            parent.mapView.setRegion(region, animated: true)
-        }
-        
-        
         // MARK: Select Annotatiton
         func addSelectAnnotation(coordinate: CLLocationCoordinate2D) {
-            parent.mapView.removeAnnotations(parent.mapView.annotations)
+            let customAnnotation = CustomCircleAnnotation(annotation: nil, reuseIdentifier: "CustomAnnotation")
+
+            let annotationPoint = MKPointAnnotation()
+            annotationPoint.coordinate = coordinate
+            parent.mapView.addAnnotation(annotationPoint)
+            parent.mapView.selectAnnotation(annotationPoint, animated: true)
+        }
+        
+        // MARK: Adding Custom Annotation View.
+        func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+            guard annotation is MKPointAnnotation else { return nil }
             
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = coordinate
-            self.parent.mapView.addAnnotation(annotation)
-            self.parent.mapView.selectAnnotation(annotation, animated: true)
+            let annotationView = CustomCircleAnnotation(annotation: annotation, reuseIdentifier: "CustomAnnotation")
+            annotationView.canShowCallout = true
+            return annotationView
         }
     }
 }

@@ -16,17 +16,37 @@ struct HomeView: View {
     var body: some View {
         NavigationStack {
             ZStack {
+                if viewModel.isEmpty {
+                    Text("Nothing new...")
+                        .fontWeight(.semibold)
+                        .font(.title)
+                }
+                
+                if viewModel.isBigAmount {
+                    VStack {
+                        Text("Please reduce the search")
+                            .fontWeight(.semibold)
+                            .font(.title)
+                        withAnimation {
+                            FilterView(hideParentView: {
+                                self.showFilter = false
+                            }, viewModel: self.viewModel)
+                        }
+                    }
+                }
+                
                 ScrollViewReader { reader in
                     ScrollView {
                         LazyVStack {
                             // MARK: Cell
                             ForEach(viewModel.features, id: \.id) { feature in
                                 NavigationLink {
-                                    InformationPage(feature: feature)
-                                        .id(feature.id)
+//                                    MapInformationPage(feature: feature)
+//                                        .id(feature.id)
+                                    MapInformationPage(feature: feature)
                                 } label: {
                                     EarthquakeCell(feature: feature)
-                                        .background(Color.white)
+                                        .background(Color("WhiteToBlack"))
                                         .clipShape(RoundedRectangle(cornerRadius: 6))
                                         .padding(.horizontal)
                                         .foregroundColor(.black)
@@ -45,7 +65,6 @@ struct HomeView: View {
                             } label: {
                                 Image(systemName: "calendar.day.timeline.left")
                             }
-                            .foregroundStyle(.black)
                             
                         }
                         ToolbarItem(placement: .topBarTrailing) {
@@ -59,7 +78,6 @@ struct HomeView: View {
                             } label: {
                                 Image(systemName: "arrow.clockwise")
                             }
-                            .foregroundStyle(.black)
                         }
                     }
                 }
@@ -77,13 +95,11 @@ struct HomeView: View {
                     }
                 }
             }
-            // Background Color
-            .background(Color("HomeBackground"))
             // Navigation Title
             .navigationTitle("Earthquakes")
             .navigationBarTitleDisplayMode(.inline)
-            
         }
+        .foregroundStyle(Color("BlackToWhite"))
         .onAppear {
             viewModel.getLatestAccidents()
         }
