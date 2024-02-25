@@ -27,7 +27,9 @@ struct FilterView: View {
                     VStack {
                         Text("To")
                             .fontWeight(.semibold)
-                        DatePicker("", selection: $viewModel.endDate, in: ...Date.now, displayedComponents: .date)
+                        DatePicker("", selection: $viewModel.endDate,
+                                   in: viewModel.startDate...Date.now,
+                                   displayedComponents: .date)
                             .datePickerStyle(.compact)
                             .labelsHidden()
                     }

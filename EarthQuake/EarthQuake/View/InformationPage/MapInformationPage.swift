@@ -17,6 +17,18 @@ struct MapInformationPage: View {
     var body: some View {
         ZStack {
             MapViewRepresentable(selectedLocation: $selectedLocation)
+            VStack {
+                 Spacer()
+                Link(destination: URL(string: feature.properties.url) ?? .homeDirectory) {
+                    EarthquakeCell(feature: feature)
+                        .background(Color("WhiteToBlack"))
+                        .clipShape(RoundedRectangle(cornerRadius: 6))
+                        .padding(.horizontal)
+                        .foregroundColor(.black)
+                        .shadow(radius: 9)
+                }
+             }
+            .padding(.bottom, 40)
         }
         .ignoresSafeArea()
         .onAppear(perform: {
@@ -25,8 +37,7 @@ struct MapInformationPage: View {
     }
     
     
-    // MARK: Func
-    
+    // MARK: Set Location
     private func setLocation() {
         let coordinates = self.feature.geometry.coordinates
         let longitude = coordinates[0]

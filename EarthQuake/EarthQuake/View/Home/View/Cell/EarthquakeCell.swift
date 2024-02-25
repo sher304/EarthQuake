@@ -16,7 +16,8 @@ struct EarthquakeCell: View {
     // MARK: View
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Image(systemName: "water.waves")
+            Image("seismograph")
+                .renderingMode(.template)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .foregroundStyle(.red)
@@ -52,8 +53,11 @@ struct EarthquakeCell: View {
                 .foregroundStyle(Color("BlackToWhite"))
                 .padding(.trailing, 10)
                 
+                
+                VStack(spacing: 0) {
+                    RectangleStack(magnitude: feature.properties.mag)
+                }
             }
-            Divider()
         }
         .frame(maxWidth: .infinity)
         .padding(.leading, 10)
