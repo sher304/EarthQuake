@@ -21,14 +21,29 @@ struct HomeView: View {
                         .fontWeight(.semibold)
                         .font(.title)
                 }
+                
+                if viewModel.isBigAmount {
+                    VStack {
+                        Text("Please reduce the search")
+                            .fontWeight(.semibold)
+                            .font(.title)
+                        withAnimation {
+                            FilterView(hideParentView: {
+                                self.showFilter = false
+                            }, viewModel: self.viewModel)
+                        }
+                    }
+                }
+                
                 ScrollViewReader { reader in
                     ScrollView {
                         LazyVStack {
                             // MARK: Cell
                             ForEach(viewModel.features, id: \.id) { feature in
                                 NavigationLink {
-                                    InformationPage(feature: feature)
-                                        .id(feature.id)
+//                                    MapInformationPage(feature: feature)
+//                                        .id(feature.id)
+                                    MapInformationPage(feature: feature)
                                 } label: {
                                     EarthquakeCell(feature: feature)
                                         .background(Color("WhiteToBlack"))
@@ -80,14 +95,10 @@ struct HomeView: View {
                     }
                 }
             }
-            // Background Color
-//            .background(Color("HomeBackground"))
-            .background(Color("WhiteToBlack"))
             // Navigation Title
             .navigationTitle("Earthquakes")
-            .navigationBarTitleDisplayMode(.large)
+            .navigationBarTitleDisplayMode(.inline)
         }
-//        .navigationBarColor(.clear)
         .foregroundStyle(Color("BlackToWhite"))
         .onAppear {
             viewModel.getLatestAccidents()

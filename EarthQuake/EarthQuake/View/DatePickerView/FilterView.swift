@@ -32,6 +32,7 @@ struct FilterView: View {
                             .labelsHidden()
                     }
                 }
+                .foregroundStyle(Color("BlackToWhite"))
                 
                 // Magnitude Change
                 HStack {
@@ -57,7 +58,7 @@ struct FilterView: View {
             }
             // Costomize information page
             .padding()
-            .background(.white)
+            .background(Color("WhiteToBlack"))
             .clipShape(RoundedRectangle(cornerRadius: 17))
             .shadow(radius: 10)
             
