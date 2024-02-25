@@ -33,6 +33,7 @@
 		D09DC1A72B88CF8A007967C4 /* NavigationBar+BG.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09DC1A62B88CF8A007967C4 /* NavigationBar+BG.swift */; };
 		D09DC1A92B8B75BA007967C4 /* MKCoordinator+Swap.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09DC1A82B8B75BA007967C4 /* MKCoordinator+Swap.swift */; };
 		D09DC1AB2B8B9F40007967C4 /* CustomCircleAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09DC1AA2B8B9F40007967C4 /* CustomCircleAnnotation.swift */; };
+		D09DC1AD2B8BB405007967C4 /* RectangleStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09DC1AC2B8BB405007967C4 /* RectangleStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		D09DC1A62B88CF8A007967C4 /* NavigationBar+BG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationBar+BG.swift"; sourceTree = "<group>"; };
 		D09DC1A82B8B75BA007967C4 /* MKCoordinator+Swap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKCoordinator+Swap.swift"; sourceTree = "<group>"; };
 		D09DC1AA2B8B9F40007967C4 /* CustomCircleAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCircleAnnotation.swift; sourceTree = "<group>"; };
+		D09DC1AC2B8BB405007967C4 /* RectangleStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +243,7 @@
 				D09DC1A62B88CF8A007967C4 /* NavigationBar+BG.swift */,
 				D09DC1A82B8B75BA007967C4 /* MKCoordinator+Swap.swift */,
 				D09DC1AA2B8B9F40007967C4 /* CustomCircleAnnotation.swift */,
+				D09DC1AC2B8BB405007967C4 /* RectangleStack.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				D03FD40B2B71A5EE00BB27D3 /* EarthQuakeApp.swift in Sources */,
 				D07AC2E22B76D003009E6899 /* NetworkService.swift in Sources */,
 				D07AC2FF2B7ECE6B009E6899 /* LoadingView.swift in Sources */,
+				D09DC1AD2B8BB405007967C4 /* RectangleStack.swift in Sources */,
 				D09DC1AB2B8B9F40007967C4 /* CustomCircleAnnotation.swift in Sources */,
 				D03FD4272B73D16E00BB27D3 /* MapViewRepresentable.swift in Sources */,
 				D09DC1A92B8B75BA007967C4 /* MKCoordinator+Swap.swift in Sources */,

@@ -53,6 +53,10 @@ struct EarthquakeCell: View {
                 .foregroundStyle(Color("BlackToWhite"))
                 .padding(.trailing, 10)
                 
+                
+                VStack(spacing: 0) {
+                    RectangleStack(magnitude: feature.properties.mag)
+                }
             }
         }
         .frame(maxWidth: .infinity)
